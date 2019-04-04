@@ -5,30 +5,31 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class Venda {
-      private int cod_Venda;
-      private LocalDate data_Venda;
+      private String codVenda;
+      private LocalDate dataVenda;
       private ItemVenda[] vendido;
+      private Funcionario vendidoPor;
 
-    public Venda(int cod_Venda, LocalDate data_Venda, ItemVenda[] vendido) {
-        this.cod_Venda = cod_Venda;
-        this.data_Venda = data_Venda;
+    public Venda(String codVenda, LocalDate dataVenda, ItemVenda[] vendido, Funcionario vendidoPor) {
+        this.codVenda = codVenda;
+        this.dataVenda = dataVenda;
         this.vendido = vendido;
     }
 
-    public int getCod_Venda() {
-        return cod_Venda;
+    public String getCodVenda() {
+        return codVenda;
     }
 
-    public void setCod_Venda(int cod_Venda) {
-        this.cod_Venda = cod_Venda;
+    public void setCodVenda(String codVenda) {
+        this.codVenda = codVenda;
     }
 
-    public LocalDate getData_Venda() {
-        return data_Venda;
+    public LocalDate getDataVenda() {
+        return dataVenda;
     }
 
-    public void setData_Venda(LocalDate data_Venda) {
-        this.data_Venda = data_Venda;
+    public void setDataVenda(LocalDate dataVenda) {
+        this.dataVenda = dataVenda;
     }
 
     public ItemVenda[] getVendido() {
@@ -39,14 +40,26 @@ public class Venda {
         this.vendido = vendido;
     }
 
+    public Funcionario getVendidoPor() {
+        return vendidoPor;
+    }
+
+    public void setVendidoPor(Funcionario vendidoPor) {
+        this.vendidoPor = vendidoPor;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 79 * hash + this.cod_Venda;
-        hash = 79 * hash + Objects.hashCode(this.data_Venda);
-        hash = 79 * hash + Arrays.deepHashCode(this.vendido);
+        int hash = 5;
+        hash = 59 * hash + Objects.hashCode(this.codVenda);
+        hash = 59 * hash + Objects.hashCode(this.dataVenda);
+        hash = 59 * hash + Arrays.deepHashCode(this.vendido);
+        hash = 59 * hash + Objects.hashCode(this.vendidoPor);
         return hash;
     }
+    
+
+    
 
     @Override
     public boolean equals(Object obj) {
@@ -60,10 +73,10 @@ public class Venda {
             return false;
         }
         final Venda other = (Venda) obj;
-        if (this.cod_Venda != other.cod_Venda) {
+        if (this.codVenda != other.codVenda) {
             return false;
         }
-        if (!Objects.equals(this.data_Venda, other.data_Venda)) {
+        if (!Objects.equals(this.dataVenda, other.dataVenda)) {
             return false;
         }
         if (!Arrays.deepEquals(this.vendido, other.vendido)) {
@@ -74,8 +87,10 @@ public class Venda {
 
     @Override
     public String toString() {
-        return "Venda{" + "cod_Venda=" + cod_Venda + ", data_Venda=" + data_Venda + ", vendido=" + vendido + '}';
+        return "Venda{" + "codVenda=" + codVenda + ", dataVenda=" + dataVenda + ", vendido=" + vendido + ", vendidoPor=" + vendidoPor + '}';
     }
+
+    
       
       
 }

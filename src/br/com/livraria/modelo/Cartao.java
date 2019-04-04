@@ -1,24 +1,24 @@
 package br.com.livraria.modelo;
 
 public class Cartao {
-        private int cpf_Cliente;
+        private int cpfCliente;
         private String titular;
         private int numero;
         private String bandeira;
 
-    public Cartao(int cpf_Cliente, String titular, int numero, String bandeira) {
-        this.cpf_Cliente = cpf_Cliente;
+    public Cartao(int cpfCliente, String titular, int numero, String bandeira) {
+        this.cpfCliente = cpfCliente;
         this.titular = titular;
         this.numero = numero;
         this.bandeira = bandeira;
     }
 
-    public int getCpf_Cliente() {
-        return cpf_Cliente;
+    public int getCpfCliente() {
+        return cpfCliente;
     }
 
-    public void setCpf_Cliente(int cpf_Cliente) {
-        this.cpf_Cliente = cpf_Cliente;
+    public void setCpfCliente(int cpfCliente) {
+        this.cpfCliente = cpfCliente;
     }
 
     public String getTitular() {
@@ -47,7 +47,7 @@ public class Cartao {
 
     @Override
     public String toString() {
-        return "Cartao{" + "cpf_Cliente=" + cpf_Cliente + 
+        return "Cartao{" + "cpfCliente=" + cpfCliente + 
                 ", titular=" + titular + ", numero=" + numero + 
                 ", bandeira=" + bandeira + '}';
     }
@@ -55,7 +55,7 @@ public class Cartao {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 67 * hash + this.cpf_Cliente;
+        hash = 67 * hash + this.cpfCliente;
         hash = 67 * hash + this.numero;
         return hash;
     }
@@ -72,7 +72,7 @@ public class Cartao {
             return false;
         }
         final Cartao other = (Cartao) obj;
-        if (this.cpf_Cliente != other.cpf_Cliente) {
+        if (this.cpfCliente != other.cpfCliente) {
             return false;
         }
         if (this.numero != other.numero) {

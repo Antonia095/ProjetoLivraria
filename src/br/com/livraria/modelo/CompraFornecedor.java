@@ -5,24 +5,24 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class CompraFornecedor {
-    private int cod_Compra;
+    private int codCompra;
     private LocalDate data;
     private Livro[] livros;
     private int quantidade;
 
-    public CompraFornecedor(int cod_Compra, LocalDate data, Livro[] livros, int quantidade) {
-        this.cod_Compra = cod_Compra;
+    public CompraFornecedor(int codCompra, LocalDate data, Livro[] livros, int quantidade) {
+        this.codCompra = codCompra;
         this.data = data;
         this.livros = livros;
         this.quantidade = quantidade;
     }
 
-    public int getCod_Compra() {
-        return cod_Compra;
+    public int getCodCompra() {
+        return codCompra;
     }
 
-    public void setCod_Compra(int cod_Compra) {
-        this.cod_Compra = cod_Compra;
+    public void setCodCompra(int codCompra) {
+        this.codCompra = codCompra;
     }
 
     public LocalDate getData() {
@@ -52,7 +52,7 @@ public class CompraFornecedor {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 71 * hash + this.cod_Compra;
+        hash = 71 * hash + this.codCompra;
         hash = 71 * hash + Objects.hashCode(this.data);
         hash = 71 * hash + Arrays.deepHashCode(this.livros);
         return hash;
@@ -70,7 +70,7 @@ public class CompraFornecedor {
             return false;
         }
         final CompraFornecedor other = (CompraFornecedor) obj;
-        if (this.cod_Compra != other.cod_Compra) {
+        if (this.codCompra != other.codCompra) {
             return false;
         }
         if (!Objects.equals(this.data, other.data)) {
@@ -84,7 +84,7 @@ public class CompraFornecedor {
 
     @Override
     public String toString() {
-        return "CompraFornecedor{" + "cod_Compra=" + cod_Compra +
+        return "CompraFornecedor{" + "codCompra=" + codCompra +
                 ", data=" + data + ", livros=" + livros + 
                 ", quantidade=" + quantidade + '}';
     }

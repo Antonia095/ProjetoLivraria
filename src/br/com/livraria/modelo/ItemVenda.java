@@ -4,11 +4,11 @@ import java.util.Arrays;
 
 public class ItemVenda {
     private int quantidade;
-    private Livro[] livros_Vendido;
+    private Livro[] livrosVendido;
 
-    public ItemVenda(int quantidade, Livro[] livros_Vendido) {
+    public ItemVenda(int quantidade, Livro[] livrosVendido) {
         this.quantidade = quantidade;
-        this.livros_Vendido = livros_Vendido;
+        this.livrosVendido = livrosVendido;
     }
 
     public int getQuantidade() {
@@ -19,19 +19,19 @@ public class ItemVenda {
         this.quantidade = quantidade;
     }
 
-    public Livro[] getLivros_Vendido() {
-        return livros_Vendido;
+    public Livro[] getLivrosVendido() {
+        return livrosVendido;
     }
 
-    public void setLivros_Vendido(Livro[] livros_Vendido) {
-        this.livros_Vendido = livros_Vendido;
+    public void setLivrosVendido(Livro[] livrosVendido) {
+        this.livrosVendido = livrosVendido;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 29 * hash + this.quantidade;
-        hash = 29 * hash + Arrays.deepHashCode(this.livros_Vendido);
+        hash = 29 * hash + Arrays.deepHashCode(this.livrosVendido);
         return hash;
     }
 
@@ -50,7 +50,7 @@ public class ItemVenda {
         if (this.quantidade != other.quantidade) {
             return false;
         }
-        if (!Arrays.deepEquals(this.livros_Vendido, other.livros_Vendido)) {
+        if (!Arrays.deepEquals(this.livrosVendido, other.livrosVendido)) {
             return false;
         }
         return true;
@@ -58,7 +58,7 @@ public class ItemVenda {
 
     @Override
     public String toString() {
-        return "ItemVenda{" + "quantidade=" + quantidade + ", livros_Vendido=" + livros_Vendido + '}';
+        return "ItemVenda{" + "quantidade=" + quantidade + ", livrosVendido=" + livrosVendido + '}';
     }
     
     

@@ -16,7 +16,7 @@ public class FuncionarioDaoArquivo implements FuncionarioDao {
     private File arquivoFuncionario;
 
     public FuncionarioDaoArquivo() throws IOException {
-        arquivoFuncionario = new File("Funcionário");
+        arquivoFuncionario = new File("Funcionario.bin");
         
         if(!arquivoFuncionario.exists()){
             arquivoFuncionario.createNewFile();
@@ -26,77 +26,82 @@ public class FuncionarioDaoArquivo implements FuncionarioDao {
     
     @Override
     public Set<Funcionario> getFuncionario() throws IOException, ClassNotFoundException {
-        if(arquivoFuncionario.length()>0){
-           try(ObjectInputStream f = new ObjectInputStream(
-                new FileInputStream(arquivoFuncionario)
-           )){
-               return (HashSet) f.readObject();
-           }
-       }else{
-           return new HashSet<>();
+        Set<Funcionario> funcionario;
+       if(arquivoFuncionario.length()>0){
+           ObjectInputStream f = new ObjectInputStream( new FileInputStream(arquivoFuncionario));
+           funcionario = (Set<Funcionario>) f.readObject();
+           f.close();
+        }else{
+         funcionario = new HashSet<>();
        }
+       return funcionario;
     }
 
     @Override
-    public boolean salvar(Funcionario funcionario) throws IOException, ClassNotFoundException {
-        if (buscar(funcionario.getCpf()) == null){
-          Set<Funcionario> f = getFuncionario();
-          
-          if(f.add(funcionario)){
-             atualizarArquivos(f);
-             return true;
-          }else{
-              return false;
-          }
-          
-        }else{
-            return false;
-        }
-    }
-
-    @Override
-    public boolean deletar(Funcionario funcionario) throws IOException, ClassNotFoundException {
-        Set<Funcionario> f = getFuncionario();
+    public boolean salvar(Funcionario f) throws IOException, ClassNotFoundException {
+        Set<Funcionario> funcionario = getFuncionario();
+        funcionario.add(f);
         
-        if(f.remove(funcionario)){
-            atualizarArquivos(f);
-            return true;
-        }else{
-            return false;
-        }
+        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(arquivoFuncionario));
+        out.writeObject(funcionario);
+        out.close();
+        return true;
     }
 
     @Override
-    public Funcionario buscar(int cpf) throws IOException, ClassNotFoundException {
-        Set<Funcionario> f = getFuncionario();
+    public boolean deletar(Funcionario f) throws IOException, ClassNotFoundException {
+        Set<Funcionario> funcionario = getFuncionario();
+        funcionario.remove(f);
+        
+        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(arquivoFuncionario));
+        out.writeObject(funcionario);
+        out.close();
+        return true;
+    }
+
+    @Override
+    public Funcionario buscar(String cpf) throws IOException, ClassNotFoundException {
+        Set<Funcionario> funcionario = getFuncionario();
        
-       for(Funcionario fun : f){
-           if(fun.getCpf() == cpf){
-               return fun;
+       for(Funcionario f : funcionario){
+           if(f.getCpf() == cpf){
+               return f;
            }
        }
        return null;
     }
 
     @Override
-    public boolean atualizar(Funcionario funcionario) throws IOException, ClassNotFoundException {
-        Set<Funcionario> f = getFuncionario();
+    public boolean atualizar(Funcionario f) throws IOException, ClassNotFoundException {
+        Set<Funcionario> funcionario = getFuncionario();
         
-        for(Funcionario fun : f){
-            if(fun.getCpf() == funcionario.getCpf()){
-                f.remove(fun);
-                f.add(funcionario);
-                atualizarArquivos(f);
+        for(Funcionario funcionarios : funcionario){
+            if(funcionarios.getCpf() == f.getCpf()){
+                funcionario.remove(funcionarios);
+                funcionario.add(f);
+                atualizarArquivos(funcionario);
                 return true;
             }
         }
         return false;
     }
 
-    private void atualizarArquivos(Set<Funcionario> f) throws FileNotFoundException, IOException {
+    
+
+    
+    private void atualizarArquivos(Set<Funcionario> funcionario) throws FileNotFoundException, IOException {
         ObjectOutputStream out = new ObjectOutputStream (new FileOutputStream(arquivoFuncionario));
        
-        out.writeObject(f);
+        out.writeObject(funcionario);
+        out.close();
     }
+
     
-}
+   
+ }
+
+    
+
+    
+    
+

@@ -16,7 +16,7 @@ public class LivroDaoArquivo implements LivroDao{
     private File arquivoLivro;
 
     public LivroDaoArquivo() throws IOException {
-        arquivoLivro = new File("Livro");
+        arquivoLivro = new File("Livro.bin");
         
         if(!arquivoLivro.exists()){
             arquivoLivro.createNewFile();
@@ -25,54 +25,46 @@ public class LivroDaoArquivo implements LivroDao{
     
     @Override
     public Set<Livro> getLivro() throws IOException, ClassNotFoundException {
+       Set<Livro> livro;
        if(arquivoLivro.length()>0){
-           try(ObjectInputStream l = new ObjectInputStream(
-                new FileInputStream(arquivoLivro)
-           )){
-               return (HashSet) l.readObject();
-           }
-       }else{
-           return new HashSet<>();
+           ObjectInputStream l = new ObjectInputStream( new FileInputStream(arquivoLivro));
+           livro = (Set<Livro>) l.readObject();
+           l.close();
+        }else{
+         livro = new HashSet<>();
        }
+       return livro;
     }
 
     @Override
-    public boolean salvar(Livro livro) throws IOException, ClassNotFoundException {
-        if (buscar(livro.getCod_Barra()) == null){
-          Set<Livro> l = getLivro();
-          
-          if(l.add(livro)){
-             atualizarArquivos(l);
-             return true;
-          }else{
-              return false;
-          }
-          
-        }else{
-            return false;
-        }
-            
-    }
-
-    @Override
-    public boolean deletar(Livro livro) throws IOException, ClassNotFoundException {
-        Set<Livro> l = getLivro();
+    public boolean salvar(Livro l) throws IOException, ClassNotFoundException {
+        Set<Livro> livro = getLivro();
+        livro.add(l);
         
-        if(l.remove(livro)){
-            atualizarArquivos(l);
-            return true;
-        }else{
-            return false;
-        }
+        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(arquivoLivro));
+        out.writeObject(livro);
+        out.close();
+        return true;
+    }
+
+    @Override
+    public boolean deletar(Livro l) throws IOException, ClassNotFoundException {
+        Set<Livro> livro = getLivro();
+        livro.remove(l);
+        
+        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(arquivoLivro));
+        out.writeObject(livro);
+        out.close();
+        return true;
     }
 
    @Override
-   public Livro buscar(String cod_Barra) throws IOException, ClassNotFoundException{
-       Set<Livro> l = getLivro();
+   public Livro buscar(String codBarra) throws IOException, ClassNotFoundException{
+       Set<Livro> livro = getLivro();
        
-       for(Livro livro : l){
-           if(livro.getCod_Barra().equals(cod_Barra)){
-               return livro;
+       for(Livro l : livro){
+           if(l.getCodBarra().equals(codBarra)){
+               return l;
            }
        }
        return null;
@@ -80,24 +72,25 @@ public class LivroDaoArquivo implements LivroDao{
     
 
     @Override
-    public boolean atualizar(Livro livro) throws IOException, ClassNotFoundException {
-        Set<Livro> l = getLivro();
+    public boolean atualizar(Livro l) throws IOException, ClassNotFoundException {
+        Set<Livro> livro = getLivro();
         
-        for(Livro livros : l){
-            if(livros.getCod_Barra().equals(livro.getCod_Barra())){
-                l.remove(livros);
-                l.add(livro);
-                atualizarArquivos(l);
+        for(Livro livros : livro){
+            if(livros.getCodBarra().equals(l.getCodBarra())){
+                livro.remove(livros);
+                livro.add(l);
+                atualizarArquivos(livro);
                 return true;
             }
         }
         return false;
     }
 
-    private void atualizarArquivos(Set<Livro> l) throws FileNotFoundException, IOException {
+    private void atualizarArquivos(Set<Livro> livro) throws FileNotFoundException, IOException {
         ObjectOutputStream out = new ObjectOutputStream (new FileOutputStream(arquivoLivro));
        
-        out.writeObject(l);
+        out.writeObject(livro);
+        out.close();
     }
 
   }

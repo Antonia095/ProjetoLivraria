@@ -1,29 +1,27 @@
 package br.com.livraria.modelo;
 
+import java.util.Objects;
+
 public class Fornecedor {
-     private int cnpj;
+     private String cnpj;
      private String nome;
-     private String rua;
-     private String bairro;
      private String cidade;
      private String email;
-     private int telefone;
+     private String telefone;
 
-    public Fornecedor(int cnpj, String nome, String rua, String bairro, String cidade, String email, int telefone) {
+    public Fornecedor(String cnpj, String nome, String cidade, String email, String telefone) {
         this.cnpj = cnpj;
         this.nome = nome;
-        this.rua = rua;
-        this.bairro = bairro;
         this.cidade = cidade;
         this.email = email;
         this.telefone = telefone;
     }
 
-    public int getCnpj() {
+    public String getCnpj() {
         return cnpj;
     }
 
-    public void setCnpj(int cnpj) {
+    public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
     }
 
@@ -33,22 +31,6 @@ public class Fornecedor {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getRua() {
-        return rua;
-    }
-
-    public void setRua(String rua) {
-        this.rua = rua;
-    }
-
-    public String getBairro() {
-        return bairro;
-    }
-
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
     }
 
     public String getCidade() {
@@ -67,27 +49,28 @@ public class Fornecedor {
         this.email = email;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
     @Override
     public String toString() {
         return "Fornecedor{" + "cnpj=" + cnpj + ", nome=" + nome +
-                ", rua=" + rua + ", bairro=" + bairro + ", cidade=" + cidade + 
-                ", email=" + email + ", telefone=" + telefone + '}';
+                 ", cidade=" + cidade + ", email=" + email + ", telefone=" + telefone + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 71 * hash + this.cnpj;
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.cnpj);
         return hash;
     }
+
+    
 
     @Override
     public boolean equals(Object obj) {
@@ -104,8 +87,13 @@ public class Fornecedor {
         if (this.cnpj != other.cnpj) {
             return false;
         }
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
         return true;
     }
+
+    
     
     
 }

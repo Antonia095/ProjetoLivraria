@@ -4,28 +4,31 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class Livro implements Serializable{
-            private String cod_Barra;
+
+    
+            private String codBarra;
             private String titulo;
             private String autor;
             private String genero;
-            private int ano_Edicao;
+            private int anoEdicao;
             private float preco;
 
-    public Livro(String cod_Barra, String titulo, String autor, String genero, int ano_Edicao, float preco) {
-        this.cod_Barra = cod_Barra;
+    public Livro(String codBarra, String titulo, String autor, String genero, int anoEdicao, float preco) {
+        this.codBarra = codBarra;
         this.titulo = titulo;
         this.autor = autor;
         this.genero = genero;
-        this.ano_Edicao = ano_Edicao;
+        this.anoEdicao = anoEdicao;
         this.preco = preco;
     }
 
-    public String getCod_Barra() {
-        return cod_Barra;
+    
+    public String getCodBarra() {
+        return codBarra;
     }
 
-    public void setCod_Barra(String cod_Barra) {
-        this.cod_Barra = cod_Barra;
+    public void setCodBarra(String codBarra) {
+        this.codBarra = codBarra;
     }
     
     public String getTitulo() {
@@ -52,12 +55,12 @@ public class Livro implements Serializable{
         this.genero = genero;
     }
 
-    public int getAno_Edicao() {
-        return ano_Edicao;
+    public int getAnoEdicao() {
+        return anoEdicao;
     }
 
-    public void setAno_Edicao(int ano_Edicao) {
-        this.ano_Edicao = ano_Edicao;
+    public void setAnoEdicao(int anoEdicao) {
+        this.anoEdicao = anoEdicao;
     }
 
     public float getPreco() {
@@ -70,16 +73,16 @@ public class Livro implements Serializable{
 
     @Override
     public String toString() {
-        return "Livro{" + "cod_Barra=" + cod_Barra + 
+        return "Livro{" + "codBarra=" + codBarra + 
                 ", titulo=" + titulo + ", autor=" + autor + 
-                ", genero=" + genero + ", ano_Edicao=" + ano_Edicao + 
+                ", genero=" + genero + ", anoEdicao=" + anoEdicao + 
                 ", preco=" + preco + '}';
     }
 
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 67 * hash + Objects.hashCode(this.cod_Barra);
+        hash = 67 * hash + Objects.hashCode(this.codBarra);
         return hash;
     }
 
@@ -95,7 +98,7 @@ public class Livro implements Serializable{
             return false;
         }
         final Livro other = (Livro) obj;
-        if (!Objects.equals(this.cod_Barra, other.cod_Barra)) {
+        if (!Objects.equals(this.codBarra, other.codBarra)) {
             return false;
         }
         return true;

@@ -4,11 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/JOCERLANIA/Documents/Projetos/Livraria/src/br/com/livraria/controle/LivroDaoArquivo.java</file>
-            <file>file:/C:/Users/JOCERLANIA/Documents/Projetos/Livraria/src/br/com/livraria/visao/App.java</file>
-            <file>file:/C:/Users/JOCERLANIA/Documents/Projetos/Livraria/src/br/com/livraria/controle/CadastroDao.java</file>
-            <file>file:/C:/Users/JOCERLANIA/Documents/Projetos/Livraria/src/br/com/livraria/controle/CadastroDaoArquivo.java</file>
+            <file>file:/C:/Users/JOCERLANIA/Documents/Projetos/Livraria/src/br/com/livraria/visao/TelaInicial.java</file>
+            <file>file:/C:/Users/JOCERLANIA/Documents/Projetos/Livraria/src/br/com/livraria/visao/CadastroLivro.java</file>
             <file>file:/C:/Users/JOCERLANIA/Documents/Projetos/Livraria/src/br/com/livraria/controle/LivroDao.java</file>
-            <file>file:/C:/Users/JOCERLANIA/Documents/Projetos/Livraria/src/br/com/livraria/modelo/Cadastro.java</file>
             <file>file:/C:/Users/JOCERLANIA/Documents/Projetos/Livraria/src/br/com/livraria/modelo/Livro.java</file>
         </group>
     </open-files>

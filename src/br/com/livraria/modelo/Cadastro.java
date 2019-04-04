@@ -12,6 +12,10 @@ public class Cadastro implements Serializable {
         this.senha = senha;
     }
 
+    public Cadastro() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public String getLogin() {
         return login;
     }
