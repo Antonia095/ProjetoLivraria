@@ -4,6 +4,11 @@ import br.com.livraria.modelo.Fornecedor;
 import java.io.IOException;
 import java.util.Set;
 
+/**
+ * Interface Dao da classe Fornecedor
+ * @author JOCERLANIA
+ */
+
 public interface FornecedorDao {
         Set<Fornecedor> getFornecedor() throws IOException, ClassNotFoundException;
         boolean salvar(Fornecedor fornecedor) throws IOException, ClassNotFoundException;

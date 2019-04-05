@@ -2,6 +2,11 @@ package br.com.livraria.modelo;
 
 import java.util.Arrays;
 
+/**
+ * 
+ * @author JOCERLANIA
+ */
+
 public class ItemVenda {
     private int quantidade;
     private Livro[] livrosVendido;

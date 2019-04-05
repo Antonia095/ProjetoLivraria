@@ -2,6 +2,11 @@ package br.com.livraria.modelo;
 
 import java.util.Objects;
 
+/**
+ * 
+ * @author JOCERLANIA
+ */
+
 public class Fornecedor {
      private String cnpj;
      private String nome;

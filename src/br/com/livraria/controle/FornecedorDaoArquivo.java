@@ -11,8 +11,21 @@ import java.io.ObjectOutputStream;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Classe de implementação de Fornecedor dao
+ * 
+ * @author JOCERLANIA
+ */
+
 public class FornecedorDaoArquivo implements FornecedorDao{
         private File arquivoFornecedor;
+ 
+        /**
+         * Método de pesistência.
+         * 
+         * @throws IOException 
+         */
+
 
     public FornecedorDaoArquivo() throws IOException {
         arquivoFornecedor = new File("Fornecedor.bin");
@@ -22,6 +35,13 @@ public class FornecedorDaoArquivo implements FornecedorDao{
         }
     }
     
+    /**
+     * Método usado para armazenar as informações da classe
+     * fornecedor usando a tabela Hast.
+     * @return
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
     
     @Override
     public Set<Fornecedor> getFornecedor() throws IOException, ClassNotFoundException {
@@ -36,6 +56,15 @@ public class FornecedorDaoArquivo implements FornecedorDao{
        return fornecedor;
     }
 
+    /**
+     * Método utilizado para salvar as informações do Fornecedor.
+     * 
+     * @param f
+     * @return
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
+    
     @Override
     public boolean salvar(Fornecedor f) throws IOException, ClassNotFoundException {
         Set<Fornecedor> fornecedor = getFornecedor();
@@ -46,6 +75,15 @@ public class FornecedorDaoArquivo implements FornecedorDao{
         out.close();
         return true;
     }
+    
+    /**
+     * Método utilizado para deletar os dados do Fornecedor.
+     * 
+     * @param f
+     * @return
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
 
     @Override
     public boolean deletar(Fornecedor f) throws IOException, ClassNotFoundException {
@@ -58,6 +96,15 @@ public class FornecedorDaoArquivo implements FornecedorDao{
         return true;
     }
 
+    /**
+     * Método utilizado para buscar os dados do Fornecedor cadastrado.
+     * 
+     * @param nome
+     * @return
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
+    
     @Override
     public Fornecedor buscar(String nome) throws IOException, ClassNotFoundException {
         Set<Fornecedor> fornecedor = getFornecedor();
@@ -70,6 +117,15 @@ public class FornecedorDaoArquivo implements FornecedorDao{
        return null;
     }
 
+    /**
+     * Método utilizado para atualizar os dados do Fornecedor.
+     * 
+     * @param f
+     * @return
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
+    
     @Override
     public boolean atualizarDadosFornecedor(Fornecedor f) throws IOException, ClassNotFoundException {
         Set<Fornecedor> fornecedor = getFornecedor();
@@ -85,6 +141,13 @@ public class FornecedorDaoArquivo implements FornecedorDao{
         return false;
     }
 
+    /**
+     * Método para atualizar os dados do Fornecedor.
+     * 
+     * @param fornecedor
+     * @throws FileNotFoundException
+     * @throws IOException 
+     */
     
     private void atualizarArquivos(Set<Fornecedor> fornecedor) throws FileNotFoundException, IOException {
         ObjectOutputStream out = new ObjectOutputStream (new FileOutputStream(arquivoFornecedor));

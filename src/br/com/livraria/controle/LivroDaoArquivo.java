@@ -11,9 +11,21 @@ import java.io.ObjectOutputStream;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Classe de implementação de Livro dao.
+ * 
+ * @author JOCERLANIA
+ */
+
 public class LivroDaoArquivo implements LivroDao{
     
     private File arquivoLivro;
+    
+    /**
+     * Método de persistência.
+     * 
+     * @throws IOException 
+     */
 
     public LivroDaoArquivo() throws IOException {
         arquivoLivro = new File("Livro.bin");
@@ -22,6 +34,15 @@ public class LivroDaoArquivo implements LivroDao{
             arquivoLivro.createNewFile();
         }
     }
+    
+    /**
+     * Método usado para armazenar as informações da classe
+     * Livro usando a tabela Hast.
+     * 
+     * @return
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
     
     @Override
     public Set<Livro> getLivro() throws IOException, ClassNotFoundException {
@@ -35,6 +56,15 @@ public class LivroDaoArquivo implements LivroDao{
        }
        return livro;
     }
+    
+    /**
+     * Método para salvar as informações do Livro.
+     * 
+     * @param l
+     * @return
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
 
     @Override
     public boolean salvar(Livro l) throws IOException, ClassNotFoundException {
@@ -46,6 +76,15 @@ public class LivroDaoArquivo implements LivroDao{
         out.close();
         return true;
     }
+    
+    /**
+     * Método utilizado para deletar os dados de um Livro.
+     * 
+     * @param l
+     * @return
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
 
     @Override
     public boolean deletar(Livro l) throws IOException, ClassNotFoundException {
@@ -57,6 +96,15 @@ public class LivroDaoArquivo implements LivroDao{
         out.close();
         return true;
     }
+    
+    /**
+     * Método utilizado para buscar os dados de um Livro.
+     * 
+     * @param codBarra
+     * @return
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
 
    @Override
    public Livro buscar(String codBarra) throws IOException, ClassNotFoundException{
@@ -70,6 +118,14 @@ public class LivroDaoArquivo implements LivroDao{
        return null;
    }
     
+   /**
+    * Método utilizado para atualizar as informações de um Livro.
+    * 
+    * @param l
+    * @return
+    * @throws IOException
+    * @throws ClassNotFoundException 
+    */
 
     @Override
     public boolean atualizar(Livro l) throws IOException, ClassNotFoundException {
@@ -85,6 +141,14 @@ public class LivroDaoArquivo implements LivroDao{
         }
         return false;
     }
+    
+    /**
+     * Método utilizado para atualizar as informações de um Livro.
+     * 
+     * @param livro
+     * @throws FileNotFoundException
+     * @throws IOException 
+     */
 
     private void atualizarArquivos(Set<Livro> livro) throws FileNotFoundException, IOException {
         ObjectOutputStream out = new ObjectOutputStream (new FileOutputStream(arquivoLivro));

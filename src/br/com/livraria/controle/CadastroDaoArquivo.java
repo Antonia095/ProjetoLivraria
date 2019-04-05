@@ -13,9 +13,20 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Classe de implementação de Cadastro dao
+ * @author JOCERLANIA
+ */
+
 public class CadastroDaoArquivo implements CadastroDao {
     
     private File arquivo;
+    
+    /**
+     * Método de persistência
+     * 
+     * @throws IOException 
+     */
 
     public CadastroDaoArquivo() throws IOException {
         arquivo = new File("Usuario.bin");
@@ -25,7 +36,14 @@ public class CadastroDaoArquivo implements CadastroDao {
         }
        
     }
-    
+    /**
+     * Método usado para armazenar as informações da classe
+     * cadastro usando a tabela Hast
+     * 
+     * @return
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
     
     @Override
     public Set<Cadastro> getCadastro() throws IOException, ClassNotFoundException {
@@ -39,6 +57,15 @@ public class CadastroDaoArquivo implements CadastroDao {
        }
        return usuario;
     }
+    
+    /**
+     * Método utilizado para salvar as informações de um Cadastro
+     * 
+     * @param u
+     * @return
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
 
     @Override
     public boolean salvar(Cadastro u) throws IOException, ClassNotFoundException {
@@ -51,6 +78,17 @@ public class CadastroDaoArquivo implements CadastroDao {
         out.close();
         return true;
     }
+    
+    /**
+     * Método utilizado para acessar fazer o login,
+     * possibilitando, assim o acesso ao sistema.
+     * 
+     * @param login
+     * @param senha
+     * @return
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
 
      @Override
     public Cadastro acessar(String login, String senha) throws IOException, ClassNotFoundException {
@@ -63,6 +101,15 @@ public class CadastroDaoArquivo implements CadastroDao {
         }
         return null;
     }
+    
+    /**
+     * Método utilizado para buscar o login do usuário
+     * 
+     * @param login
+     * @return
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
 
     @Override
     public Cadastro buscar(String login) throws IOException, ClassNotFoundException {

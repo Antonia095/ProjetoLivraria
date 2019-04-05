@@ -4,24 +4,29 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Objects;
 
+/**
+ * 
+ * @author JOCERLANIA
+ */
+
 public class CompraFornecedor {
-    private int codCompra;
+    private String codCompra;
     private LocalDate data;
     private Livro[] livros;
     private int quantidade;
 
-    public CompraFornecedor(int codCompra, LocalDate data, Livro[] livros, int quantidade) {
+    public CompraFornecedor(String codCompra, LocalDate data, Livro[] livros, int quantidade) {
         this.codCompra = codCompra;
         this.data = data;
         this.livros = livros;
         this.quantidade = quantidade;
     }
 
-    public int getCodCompra() {
+    public String getCodCompra() {
         return codCompra;
     }
 
-    public void setCodCompra(int codCompra) {
+    public void setCodCompra(String codCompra) {
         this.codCompra = codCompra;
     }
 
@@ -51,12 +56,15 @@ public class CompraFornecedor {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 71 * hash + this.codCompra;
-        hash = 71 * hash + Objects.hashCode(this.data);
-        hash = 71 * hash + Arrays.deepHashCode(this.livros);
+        int hash = 3;
+        hash = 97 * hash + Objects.hashCode(this.codCompra);
+        hash = 97 * hash + Objects.hashCode(this.data);
+        hash = 97 * hash + Arrays.deepHashCode(this.livros);
+        hash = 97 * hash + this.quantidade;
         return hash;
     }
+
+    
 
     @Override
     public boolean equals(Object obj) {

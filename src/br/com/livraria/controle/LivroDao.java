@@ -4,6 +4,11 @@ import br.com.livraria.modelo.Livro;
 import java.io.IOException;
 import java.util.Set;
 
+/**
+ * Interface Dao da classe Livro
+ * @author JOCERLANIA
+ */
+
 public interface LivroDao {
         Set<Livro> getLivro() throws IOException, ClassNotFoundException;
         boolean salvar(Livro livro) throws IOException, ClassNotFoundException;

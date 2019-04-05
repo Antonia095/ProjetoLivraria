@@ -1,5 +1,10 @@
 package br.com.livraria.modelo;
 
+/**
+ * 
+ * @author JOCERLANIA
+ */
+
 public class Cartao {
         private int cpfCliente;
         private String titular;

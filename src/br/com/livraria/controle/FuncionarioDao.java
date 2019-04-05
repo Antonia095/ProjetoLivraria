@@ -4,6 +4,11 @@ import br.com.livraria.modelo.Funcionario;
 import java.io.IOException;
 import java.util.Set;
 
+/**
+ * Interface Dao da classe Funcionario
+ * @author JOCERLANIA
+ */
+
 public interface FuncionarioDao {
         Set<Funcionario> getFuncionario() throws IOException, ClassNotFoundException;
         boolean salvar(Funcionario funcionario) throws IOException, ClassNotFoundException;

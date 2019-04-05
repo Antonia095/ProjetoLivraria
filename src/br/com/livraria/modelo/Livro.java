@@ -3,6 +3,11 @@ package br.com.livraria.modelo;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * 
+ * @author JOCERLANIA
+ */
+
 public class Livro implements Serializable{
 
     

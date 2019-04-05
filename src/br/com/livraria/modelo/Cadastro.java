@@ -3,6 +3,11 @@ package br.com.livraria.modelo;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * 
+ * @author JOCERLANIA
+ */
+
 public class Cadastro implements Serializable {
       private String login;
       private String senha;
